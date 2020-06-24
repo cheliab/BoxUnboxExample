@@ -18,6 +18,23 @@ namespace BoxUnboxExample
             Console.WriteLine(valueTypeUnboxed);
         }
 
+        /// <summary>
+        /// Неочевидные случаи упаковки распаковки 
+        /// </summary>
+        public static void NonObviousCases()
+        {
+            // 1. Преобразование типа в ссылку на реализуемый им интерфейс
+            IComparable<int> iComparable = 1;
+            IEquatable<char> iEquatable = '1';
+
+            // 2. Преобразование к типу dynamic
+            // Это одно и тоже, что к типу object
+            dynamic refType = 1;
+            
+            // 3. Преобразование типа enum в ссылку на System.Enum
+            Enum format = UriFormat.Unescaped;
+        }
+
         static void Main(string[] args)
         {
             SimpleBoxingUnboxing();
